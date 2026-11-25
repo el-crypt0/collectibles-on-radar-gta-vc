@@ -28,13 +28,13 @@ jobs:
           set PLUGIN_SDK_DIR=%GITHUB_WORKSPACE%\plugin-sdk
           cd plugin-sdk
           call "tools\generate\Visual Studio.bat"
-
+          
       - name: Build Vice City SDK
         shell: cmd
         run: |
           set PLUGIN_SDK_DIR=%GITHUB_WORKSPACE%\plugin-sdk
           cd plugin-sdk
-          msbuild plugin.slnx /property:Configuration=zRelease /property:Platform="Mixed Platforms" /target:plugin_vc /m /verbosity:minimal
+          msbuild plugin.slnx /property:Configuration=zDebug /property:Platform="Mixed Platforms" /target:plugin_vc /m /verbosity:minimal
 
       - name: Locate missing SDK headers
         shell: powershell
