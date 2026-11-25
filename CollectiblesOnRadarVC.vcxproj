@@ -74,7 +74,7 @@
       <GenerateDebugInformation>false</GenerateDebugInformation>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
-      <AdditionalDependencies>Plugin_VC_d.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>Plugin_VC.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <AdditionalLibraryDirectories>$(PLUGIN_SDK_DIR)\output\lib;$(DXSDK_DIR)\Lib\x86;$(PLUGIN_SDK_DIR)\shared\bass;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <ImportLibrary>output\asi\CollectiblesOnRadar.VC.lib</ImportLibrary>
     </Link>
