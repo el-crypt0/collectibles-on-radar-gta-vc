@@ -45,6 +45,24 @@ jobs:
           Write-Host "Buscando eScriptCommands.h..."
           Get-ChildItem "$env:GITHUB_WORKSPACE\plugin-sdk" -Recurse -Filter "eScriptCommands.h" | Select-Object -ExpandProperty FullName
 
+      - name: Locate Plugin VC library
+        shell: powershell
+        run: |
+          Write-Host "Buscando plugin_vc.lib..."
+          Get-ChildItem "$env:GITHUB_WORKSPACE\plugin-sdk" -Recurse -Filter "plugin_vc.lib" |
+            Select-Object -ExpandProperty FullName
+
+          Write-Host "Buscando otras bibliotecas VC..."
+          Get-ChildItem "$env:GITHUB_WORKSPACE\plugin-sdk" -Recurse -Filter "*vc*.lib" |
+            Select-Object -ExpandProperty FullName
+
+          Write-Host "Contenido de output\lib:"
+          if (Test-Path "$env:GITHUB_WORKSPACE\plugin-sdk\output\lib") {
+            Get-ChildItem "$env:GITHUB_WORKSPACE\plugin-sdk\output\lib"
+          } else {
+            Write-Host "La carpeta output\lib no existe."
+          }
+
       - name: Build Collectibles ASI
         shell: cmd
         run: |
