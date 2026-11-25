@@ -40,7 +40,7 @@ jobs:
         shell: cmd
         run: |
           set PLUGIN_SDK_DIR=%GITHUB_WORKSPACE%\plugin-sdk
-          msbuild CollectiblesOnRadarVC.vcxproj /property:Configuration=Release /property:Platform=Win32 /property:PlatformToolset=v145 /property:PostBuildEventUseInBuild=false /m /verbosity:minimal
+          msbuild CollectiblesOnRadarVC.vcxproj /property:Configuration=Release /property:Platform=Win32 /property:PostBuildEventUseInBuild=false /m /verbosity:minimal
 
       - name: Upload ASI file
         uses: actions/upload-artifact@v4
