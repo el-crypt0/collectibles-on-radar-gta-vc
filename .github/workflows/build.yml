@@ -36,6 +36,15 @@ jobs:
           cd plugin-sdk
           msbuild plugin.slnx /property:Configuration=zDebug /property:Platform="Mixed Platforms" /target:plugin_vc /m /verbosity:minimal
 
+      - name: Locate missing SDK headers
+        shell: powershell
+        run: |
+          Write-Host "Buscando eModelInfoType.h..."
+          Get-ChildItem "$env:GITHUB_WORKSPACE\plugin-sdk" -Recurse -Filter "eModelInfoType.h" | Select-Object -ExpandProperty FullName
+
+          Write-Host "Buscando eScriptCommands.h..."
+          Get-ChildItem "$env:GITHUB_WORKSPACE\plugin-sdk" -Recurse -Filter "eScriptCommands.h" | Select-Object -ExpandProperty FullName
+
       - name: Build Collectibles ASI
         shell: cmd
         run: |
