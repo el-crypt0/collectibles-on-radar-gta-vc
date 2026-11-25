@@ -34,7 +34,7 @@ jobs:
         run: |
           set PLUGIN_SDK_DIR=%GITHUB_WORKSPACE%\plugin-sdk
           cd plugin-sdk
-          msbuild plugin.slnx /property:Configuration=Release /property:Platform="Mixed Platforms" /target:plugin_vc /m /verbosity:minimal
+          msbuild plugin.slnx /property:Configuration=Release /property:Platform="Mixed Platforms" /property:PlatformToolset=v143 /target:plugin_vc /m /verbosity:minimal
 
       - name: Locate missing SDK headers
         shell: powershell
