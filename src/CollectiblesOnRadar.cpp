@@ -9,6 +9,15 @@
 
 #include "Util.h"
 #include "Settings.h"
+#include <cmath>
+
+static float CalculateDistance2D(const CVector2D& a, const CVector2D& b)
+{
+    const float dx = a.x - b.x;
+    const float dy = a.y - b.y;
+
+    return std::sqrt(dx * dx + dy * dy);
+}
 
 enum eBlipMode // should be in CRadar.h
 {
@@ -96,7 +105,7 @@ private:
             {
                 const CVector& storePos = Util::s_storeList[i].location;
 
-                const float distance = DistanceBetweenPoints(CVector2D(playaPos.x, playaPos.y), CVector2D(storePos.x, storePos.y));
+                const float distance = CalculateDistance2D(CVector2D(playaPos.x, playaPos.y), CVector2D(storePos.x, storePos.y));
                 if (distance < CRadar::m_radarRange || ignoreRange)
                 {
                     CRadar::TransformRealWorldPointToRadarSpace(radarSpace, CVector2D(storePos.x, storePos.y));
@@ -184,7 +193,7 @@ private:
             {
                 const CVector& pickupPos = CPickups::aPickUps[i].vecPos;
 
-                const float distance = DistanceBetweenPoints(CVector2D(playaPos.x, playaPos.y), CVector2D(pickupPos.x, pickupPos.y));
+                const float distance = CalculateDistance2D(CVector2D(playaPos.x, playaPos.y), CVector2D(pickupPos.x, pickupPos.y));
                 if (distance < CRadar::m_radarRange || ignoreRange)
                 {
                     CRadar::TransformRealWorldPointToRadarSpace(radarSpace, CVector2D(pickupPos.x, pickupPos.y));
@@ -315,7 +324,7 @@ private:
             {
                 const CVector& usjPos = Util::s_usjList[i].location;
 
-                const float distance = DistanceBetweenPoints(CVector2D(playaPos.x, playaPos.y), CVector2D(usjPos.x, usjPos.y));
+                const float distance = CalculateDistance2D(CVector2D(playaPos.x, playaPos.y), CVector2D(usjPos.x, usjPos.y));
                 if (distance < CRadar::m_radarRange || ignoreRange)
                 {
                     CRadar::TransformRealWorldPointToRadarSpace(radarSpace, CVector2D(usjPos.x, usjPos.y));
